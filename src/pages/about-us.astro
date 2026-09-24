@@ -1,0 +1,174 @@
+---
+/**
+ * About Us — preserves the original page content: company story, service
+ * list, team members. (Original numeric counters appear to be unset template
+ * defaults — see README; only the "25+ years" figure from the source is shown.)
+ */
+import { ArrowRight, Award, ShieldCheck, Users } from "lucide-react";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import CTASection from "../components/CTASection.astro";
+import { href } from "../config/site";
+import { services } from "../content/services";
+
+const team = [
+  { name: "Mark Anthony", role: "Founder" },
+  { name: "Peter Costa", role: "Chief Engineer" },
+  { name: "Jack Muli", role: "Engineer" },
+  { name: "Kelvin C.", role: "Site Supervisor" },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: "About Us — Prestige Roofing Solutions",
+  description:
+    "Local roofing company in Sydney: advanced tools, expert resources and tailor-made roofing solutions.",
+};
+---
+
+<BaseLayout
+  title="Local Roofing Company Sydney | Prestige Roofing Solutions"
+  description="Prestige Roofing Solutions — one of the best local roofing companies in Sydney. Licensed, insured experts crafting solutions no one else can. Meet the team."
+  path="/about-us/"
+  schema={schema}
+>
+  <PageHero
+    eyebrow="About us"
+    title="Build your dream with us"
+    intro="Prestige Roofing Solutions — solving all roofing issues with advanced tools and expert resources."
+    trail={[{ label: "About Us" }]}
+  />
+
+  <!-- Story -->
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20" aria-labelledby="story-heading">
+    <div class="grid gap-10 lg:grid-cols-2 lg:gap-16 items-start">
+      <div class="reveal">
+        <p class="eyebrow">Who we are</p>
+        <h2 id="story-heading" class="mt-3 text-3xl sm:text-4xl font-extrabold text-charcoal leading-tight">
+          The roof is the most important asset of your home
+        </h2>
+        <div class="mt-5 space-y-4 text-muted leading-relaxed">
+          <p>
+            It should be robust in all ways. The lack of proper care and
+            continuous negligence can ruin its condition and make you pay a lot
+            of money to correct all issues. We don't prefer correcting issues —
+            we prefer preventing them while strengthening your roof.
+          </p>
+          <p>
+            Prestige Roofing Solutions is one of the best local roofing
+            companies, with advanced tools and expert resources. We can craft
+            solutions that no one else can do for you. We do not believe in
+            concealing an issue — we believe in solving the issue from the root.
+          </p>
+          <p>
+            Being the best among the local roofing companies, we are rightly
+            equipped with the best tools and technologies, and expert
+            professionals. We conduct deep market research and deploy our
+            practical knowledge in order to offer the best tailor-made solutions
+            to your unique roofing issues. Be it repairing your issues or
+            preventing future hazards — we do everything with dedication and
+            expertise. With us, you can say goodbye to your roof worries
+            permanently. Just let us know your roofing problems and we will be
+            back to you ASAP with the best roofing solutions.
+          </p>
+        </div>
+        <div class="mt-8 grid grid-cols-3 gap-4 max-w-md">
+          <div class="bg-white border border-line rounded-xl p-4 text-center">
+            <ShieldCheck size={22} class="mx-auto text-copper-dark" aria-hidden="true" />
+            <p class="mt-2 text-[0.82rem] font-semibold text-charcoal leading-snug">Licensed &amp; insured</p>
+          </div>
+          <div class="bg-white border border-line rounded-xl p-4 text-center">
+            <Award size={22} class="mx-auto text-copper-dark" aria-hidden="true" />
+            <p class="mt-2 text-[0.82rem] font-semibold text-charcoal leading-snug">25+ years combined craft</p>
+          </div>
+          <div class="bg-white border border-line rounded-xl p-4 text-center">
+            <Users size={22} class="mx-auto text-copper-dark" aria-hidden="true" />
+            <p class="mt-2 text-[0.82rem] font-semibold text-charcoal leading-snug">Dedicated local team</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal space-y-6">
+        <img
+          src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1200&auto=format&fit=crop"
+          alt="Roofing engineer reviewing work on site"
+          class="rounded-xl w-full h-72 sm:h-80 object-cover"
+          loading="lazy"
+          width="1200"
+          height="800"
+        />
+        <div class="bg-charcoal text-white rounded-xl p-6 sm:p-8">
+          <p class="eyebrow">What we offer</p>
+          <p class="mt-2 text-white/80 leading-relaxed text-[0.95rem]">
+            Roof wash, Sydney roof painting, carport, roof replacement, roof
+            repair, skylights, roof ventilation, guttering, gutter guard,
+            Colorbond roof, tile roof, roof restoration, and more.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            {services.map((s) => (
+              <a
+                href={href(`/${s.slug}/`)}
+                class="text-[0.8rem] font-semibold border border-white/25 rounded-full px-3.5 py-1.5 hover:border-copper hover:text-copper transition-colors"
+              >
+                {s.title}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="bg-white border-y border-line" aria-labelledby="team-heading">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20">
+      <div class="text-center max-w-2xl mx-auto">
+        <p class="eyebrow">Our team</p>
+        <h2 id="team-heading" class="mt-3 text-3xl sm:text-4xl font-extrabold text-charcoal">
+          Our experts
+        </h2>
+        <p class="mt-4 text-muted leading-relaxed">
+          Powering your roof is the ultimate dream of Prestige Roofing
+          Solutions, one of the best roofing constructions.
+        </p>
+      </div>
+      <ul class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {team.map((m) => (
+          <li class="reveal bg-cream border border-line rounded-xl p-7 text-center hover:shadow-lg hover:shadow-charcoal/5 transition-shadow">
+            <span
+              class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-charcoal text-copper font-display font-extrabold text-2xl"
+              aria-hidden="true"
+            >
+              {m.name.charAt(0)}
+            </span>
+            <h3 class="mt-4 font-display font-bold text-lg text-charcoal">{m.name}</h3>
+            <p class="text-[0.88rem] text-copper-dark font-semibold">{m.role}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Founder note -->
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20" aria-label="Founder note">
+    <div class="reveal max-w-3xl mx-auto text-center">
+      <p class="font-display text-xl sm:text-2xl font-bold text-charcoal leading-relaxed">
+        “After diagnosing the issue, we always do our best for our clients —
+        not what's easy for us. We prefer to educate our clients and keep
+        everything fair between us.”
+      </p>
+      <p class="mt-5 font-display font-bold text-charcoal">
+        Ajay Singh
+        <span class="block text-[0.85rem] font-body font-medium text-muted">Prestige Roofing Solutions</span>
+      </p>
+      <a
+        href={href("/contact-us/")}
+        class="mt-7 inline-flex items-center gap-2 bg-charcoal text-white font-display font-bold px-7 py-3.5 rounded-md hover:bg-copper-dark transition-colors"
+      >
+        Work With Us <ArrowRight size={16} aria-hidden="true" />
+      </a>
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>

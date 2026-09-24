@@ -1,0 +1,84 @@
+---
+/** Testimonials — all original reviews preserved (site + Google-quoted). */
+import { Star } from "lucide-react";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import TestimonialCard from "../components/TestimonialCard.astro";
+import CTASection from "../components/CTASection.astro";
+import { business } from "../config/site";
+import { siteTestimonials, googleTestimonials } from "../content/testimonials";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Testimonials — Prestige Roofing Solutions",
+  description: "Customer testimonials and Google reviews for Prestige Roofing Solutions, Sydney.",
+};
+---
+
+<BaseLayout
+  title="Testimonials | Local Roofing Contractors — Prestige Roofing Solutions"
+  description="Happy clients of Prestige Roofing Solutions Sydney — real testimonials on restoration, replacement, repairs and guttering, plus 4.4 stars from 26 Google reviews."
+  path="/testimonials-roofing-solutions-sydney/"
+  schema={schema}
+>
+  <PageHero
+    eyebrow="Testimonials"
+    title="Happy clients"
+    intro="We prefer to educate our clients and keep everything fair between us — here's what they say about working with us."
+    trail={[{ label: "Testimonials" }]}
+  />
+
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20" aria-label="Customer testimonials">
+    <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-3 text-center bg-white border border-line rounded-xl px-6 py-6 max-w-2xl mx-auto">
+      <p class="inline-flex items-center gap-2 text-muted">
+        <span class="flex" aria-label="Rated 4.4 out of 5 on Google">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <Star size={18} aria-hidden="true" class={i < 4 ? "fill-copper text-copper" : "text-copper/50"} />
+          ))}
+        </span>
+        <strong class="text-charcoal text-lg">{business.googleRating.score}</strong>
+        Based on {business.googleRating.count} Google reviews
+      </p>
+      <a
+        href={business.googleRating.reviewUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-display font-bold text-copper-dark hover:underline text-[0.95rem]"
+      >
+        Review us on Google
+      </a>
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {siteTestimonials.map((t) => (
+        <TestimonialCard testimonial={t} />
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-white border-y border-line" aria-label="Google reviews">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20">
+      <div class="reveal max-w-2xl">
+        <p class="eyebrow">Google reviews</p>
+        <h2 class="mt-3 text-3xl sm:text-4xl font-extrabold text-charcoal">
+          Reviews quoted from Google
+        </h2>
+        <p class="mt-3 text-muted leading-relaxed">
+          The following reviews are quoted from our Google listing, as featured
+          on the original website.
+        </p>
+      </div>
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {googleTestimonials.map((t) => (
+          <TestimonialCard testimonial={t} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    heading="Join our happy clients across Sydney"
+    body="Tell us about your roof and experience the same careful, fair, expert service — from inspection to final clean-up."
+  />
+</BaseLayout>

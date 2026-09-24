@@ -1,0 +1,50 @@
+---
+/** Services index — all 12 services (preserves original descriptions). */
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import CTASection from "../components/CTASection.astro";
+import { services } from "../content/services";
+
+const descriptions: Record<string, string> = {
+  "colorbond-roof": "A wide range of Colorbond roofing solutions — choose the colour and profile you want.",
+  "tile-roof": "Any tile profile on any roof slope, installed to perfection with the best tiles.",
+  "roof-replacement": "For roofs with many complications — we restore your roof's best condition.",
+  "roof-repairs": "Expert repairs for tile and Colorbond roofs with advanced tools and technologies.",
+  "roof-wash": "Protection from pollution, moss and fungus growth with advanced washing techniques.",
+  "roof-restoration": "Premium restoration that adds longevity and property value.",
+  "roof-painting-sydney": "Bring back your roof's charm — restored appearance and added durability.",
+  "modern-carport-pergola": "Add greenery, shade and an amazing view with carport and pergola services.",
+  "guttering-guard": "Gutter care for lasting performance — free from frequent repair expenses.",
+  guttering: "Gutter guard services and maintenance tips for a healthy roof.",
+  skylights: "Energy efficiency, ventilation, privacy and mood — tailor-made skylights.",
+  "roof-ventilation": "Keep your home cooler and prevent dampness with proper ventilation.",
+};
+---
+
+<BaseLayout
+  title="Roofing Services Sydney | Prestige Roofing Solutions"
+  description="All roofing services in Sydney: restoration, repairs, replacement, painting, wash, tile & Colorbond roofs, guttering, skylights, ventilation, carports. Call +61 407 462 014."
+  path="/services/"
+>
+  <PageHero
+    eyebrow="What we do"
+    title="Our roofing services"
+    intro="From restoration to replacement — explore every service Prestige Roofing Solutions offers across Sydney."
+    trail={[{ label: "Services" }]}
+  />
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20" aria-label="All services">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {services.map((s) => (
+        <ServiceCard
+          slug={s.slug}
+          title={s.title}
+          description={descriptions[s.slug] ?? s.heroSub}
+          image={s.image}
+          imageAlt={s.imageAlt}
+        />
+      ))}
+    </div>
+  </section>
+  <CTASection />
+</BaseLayout>

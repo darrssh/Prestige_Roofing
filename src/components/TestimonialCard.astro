@@ -1,0 +1,38 @@
+---
+/** Testimonial card — name + wording preserved from the original site. */
+import { Quote, Star } from "lucide-react";
+import type { Testimonial } from "../content/testimonials";
+
+interface Props {
+  testimonial: Testimonial;
+}
+const { testimonial } = Astro.props;
+const initial = testimonial.name.charAt(0).toUpperCase();
+---
+
+<figure class="reveal bg-white border border-line rounded-xl p-6 sm:p-7 flex flex-col h-full">
+  <div class="flex items-center justify-between">
+    <Quote size={26} class="text-copper" aria-hidden="true" />
+    {testimonial.source === "google" && (
+      <span class="flex items-center gap-1 text-[0.78rem] font-semibold text-muted" title="Quoted from Google reviews featured on the original website">
+        <Star size={13} class="fill-copper text-copper" aria-hidden="true" />
+        Google review
+      </span>
+    )}
+  </div>
+  <blockquote class="mt-4 text-[0.93rem] leading-relaxed text-slate-text flex-1">
+    “{testimonial.quote}”
+  </blockquote>
+  <figcaption class="mt-5 pt-5 border-t border-line flex items-center gap-3">
+    <span
+      class="inline-flex items-center justify-center w-11 h-11 rounded-full bg-charcoal text-white font-display font-bold text-lg shrink-0"
+      aria-hidden="true"
+    >
+      {initial}
+    </span>
+    <span>
+      <span class="block font-display font-bold text-charcoal">{testimonial.name}</span>
+      <span class="block text-[0.83rem] text-muted">{testimonial.role}</span>
+    </span>
+  </figcaption>
+</figure>

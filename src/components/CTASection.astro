@@ -1,0 +1,45 @@
+---
+/** Premium call-to-action band used above the footer. */
+import { ArrowRight, Phone } from "lucide-react";
+import { business, href } from "../config/site";
+
+interface Props {
+  heading?: string;
+  body?: string;
+}
+const {
+  heading = "Unlock the power of your roof's potential",
+  body = "Whether it's restoration, repair, replacement, or any of our comprehensive services — we're not just roofing experts, we're your roofing allies. Call us today to transform your roof into a masterpiece of both form and function.",
+} = Astro.props;
+---
+
+<section class="bg-charcoal relative overflow-hidden" aria-labelledby="cta-heading">
+  <div
+    class="absolute inset-0 opacity-[0.16]"
+    aria-hidden="true"
+    style="background-image: radial-gradient(circle at 12% 20%, #C8874B 0, transparent 40%), radial-gradient(circle at 88% 85%, #C8874B 0, transparent 38%);"
+  ></div>
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20 grid gap-8 lg:grid-cols-[1.5fr_1fr] lg:items-center">
+    <div class="reveal">
+      <p class="eyebrow">Get in touch</p>
+      <h2 id="cta-heading" class="mt-3 text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+        {heading}
+      </h2>
+      <p class="mt-4 text-white/70 leading-relaxed max-w-2xl">{body}</p>
+    </div>
+    <div class="reveal flex flex-col sm:flex-row lg:flex-col gap-3 lg:items-stretch">
+      <a
+        href={href("/get-a-quote/")}
+        class="inline-flex items-center justify-center gap-2 bg-copper text-white font-display font-bold px-7 py-4 rounded-md hover:bg-copper-dark transition-colors"
+      >
+        Request a Quote <ArrowRight size={17} aria-hidden="true" />
+      </a>
+      <a
+        href={business.phoneHref}
+        class="inline-flex items-center justify-center gap-2 border border-white/30 text-white font-display font-bold px-7 py-4 rounded-md hover:border-copper hover:text-copper transition-colors"
+      >
+        <Phone size={17} aria-hidden="true" /> {business.phone}
+      </a>
+    </div>
+  </div>
+</section>

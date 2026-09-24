@@ -1,0 +1,344 @@
+---
+/**
+ * Homepage — premium rebuild preserving the original site's content:
+ * hero message, about intro, all 12 services, testimonials, contact details.
+ */
+import { ArrowRight, BadgeCheck, ClipboardCheck, MessagesSquare, SearchCheck, ShieldCheck, Star, ThumbsUp, MapPin } from "lucide-react";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import TestimonialCard from "../components/TestimonialCard.astro";
+import CTASection from "../components/CTASection.astro";
+import Reveal from "../components/react/Reveal";
+import { business, href } from "../config/site";
+import { services } from "../content/services";
+import { siteTestimonials } from "../content/testimonials";
+
+const heroImg =
+  "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2000&auto=format&fit=crop";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "RoofingContractor",
+  name: business.name,
+  description:
+    "Roof restoration, repairs, replacement, painting, guttering, skylights and more across Sydney, Australia.",
+  telephone: business.phone,
+  email: business.emailSales,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "22 Pembroke St, Blacktown NSW 2148",
+    addressLocality: "Blacktown",
+    addressRegion: "NSW",
+    postalCode: "2148",
+    addressCountry: "AU",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "07:00",
+      closes: "17:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Saturday",
+      opens: "08:00",
+      closes: "13:00",
+    },
+  ],
+  areaServed: "Greater Sydney, NSW, Australia",
+  sameAs: [business.socials.facebook, business.socials.instagram],
+};
+
+const serviceDescriptions: Record<string, string> = {
+  "colorbond-roof":
+    "A wide range of Colorbond roofing solutions — choose the colour and profile you want with fast, efficient construction.",
+  "tile-roof":
+    "Any tile profile on any roof slope, installed to perfection with the best tiles — durable, shiny and weather resistant.",
+  "roof-replacement":
+    "For roofs with many complications — from damp repair to gutter improvement, we restore your roof's best condition.",
+  "roof-repairs":
+    "Expert repairs for tile and Colorbond roofs with advanced tools — durable results without long delays.",
+  "roof-wash":
+    "Protection from pollution, moss and fungus growth with advanced washing tools and techniques.",
+  "roof-restoration":
+    "Premium restoration that adds longevity and property value — we do what others can't even imagine.",
+  "roof-painting-sydney":
+    "Bring back your roof's charm — restored appearance, added durability and protection from the elements.",
+  "modern-carport-pergola":
+    "Add greenery, shade and street appeal with modern carport and pergola roofing.",
+  "guttering-guard":
+    "Gutter care for lasting performance — save your roof from dampness, soaking and major future damage.",
+  guttering:
+    "Gutter guard services and maintenance tips that keep your gutter system and roof healthy for years.",
+  skylights:
+    "Energy efficiency, ventilation, privacy and mood — tailor-made skylights for your roof.",
+  "roof-ventilation":
+    "Keep your home cooler in summer and prevent dampness and cavity damage with proper ventilation.",
+};
+---
+
+<BaseLayout
+  title="Prestige Roofing Solutions Company | Roof Specialists in Sydney"
+  description="Prestige Roofing Solutions Pty Ltd — the best destination for all roofing solutions in Sydney: restoration, repairs, replacement, painting, guttering, skylights & more. Call +61 407 462 014."
+  path="/"
+  schema={schema}
+>
+  <!-- ============ HERO ============ -->
+  <section class="relative bg-charcoal text-white overflow-hidden" aria-labelledby="hero-heading">
+    <img
+      src={heroImg}
+      alt="Quality residential roof in Sydney at dusk"
+      class="absolute inset-0 h-full w-full object-cover"
+      width="2000"
+      height="1200"
+      fetchpriority="high"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-charcoal-deep/95 via-charcoal/80 to-charcoal/30" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 py-24 sm:py-32 lg:py-40">
+      <div class="max-w-2xl">
+        <p class="eyebrow" style="color:#DDA45F">Roof specialists · Sydney, Australia</p>
+        <h1 id="hero-heading" class="mt-4 text-4xl sm:text-6xl font-extrabold leading-[1.05] text-white">
+          Have the royal roof like a king
+        </h1>
+        <p class="mt-5 text-lg sm:text-xl text-white/80 leading-relaxed">
+          {business.taglineSub}
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a
+            href={href("/get-a-quote/")}
+            class="inline-flex items-center justify-center gap-2 bg-copper text-white font-display font-bold px-8 py-4 rounded-md hover:bg-copper-dark transition-colors"
+          >
+            Get a Free Quote <ArrowRight size={17} aria-hidden="true" />
+          </a>
+          <a
+            href={href("/contact-us/")}
+            class="inline-flex items-center justify-center gap-2 border border-white/40 text-white font-display font-bold px-8 py-4 rounded-md hover:border-copper hover:text-copper transition-colors"
+          >
+            Contact Us
+          </a>
+        </div>
+        <dl class="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-[0.9rem] text-white/75">
+          <div class="flex items-center gap-2">
+            <ShieldCheck size={17} class="text-copper" aria-hidden="true" />
+            <span><strong class="text-white font-semibold">Licensed &amp; insured</strong>&nbsp;roofing experts</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <Star size={17} class="text-copper fill-copper" aria-hidden="true" />
+            <span><strong class="text-white font-semibold">4.4 on Google</strong>&nbsp;from 26 reviews</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <MapPin size={17} class="text-copper" aria-hidden="true" />
+            <span>Serving <strong class="text-white font-semibold">Greater Sydney</strong></span>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRUST STRIP ============ -->
+  <section class="bg-white border-b border-line" aria-label="Why choose us">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 py-8 grid grid-cols-2 lg:grid-cols-4 gap-6">
+      {[
+        { icon: ShieldCheck, title: "Licensed & Insured", body: "Supported by licensed, insured people with years of experience." },
+        { icon: SearchCheck, title: "Inspect First", body: "Deep diagnosis and honest communication before any quote." },
+        { icon: ClipboardCheck, title: "Fair Written Quotes", body: "We educate clients and keep everything fair — no surprises." },
+        { icon: ThumbsUp, title: "Quality Workmanship", body: "High personal and company standards on every single job." },
+      ].map((t) => (
+        <div class="reveal flex gap-3.5">
+          <span class="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-copper-soft text-copper-dark shrink-0">
+            <t.icon size={20} aria-hidden="true" />
+          </span>
+          <span>
+            <span class="block font-display font-bold text-charcoal">{t.title}</span>
+            <span class="block text-[0.86rem] text-muted mt-1 leading-relaxed">{t.body}</span>
+          </span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ============ ABOUT PREVIEW ============ -->
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-24" aria-labelledby="about-heading">
+    <div class="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
+      <div class="reveal relative">
+        <img
+          src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1200&auto=format&fit=crop"
+          alt="Prestige Roofing Solutions roofing specialists on site"
+          class="rounded-xl w-full h-[420px] sm:h-[520px] object-cover"
+          loading="lazy"
+          width="1200"
+          height="1400"
+        />
+        <div class="absolute -bottom-6 -right-2 sm:right-8 bg-charcoal text-white rounded-xl px-7 py-5 shadow-xl">
+          <p class="font-display text-3xl font-extrabold text-copper">15+</p>
+          <p class="text-[0.85rem] text-white/70 font-medium">Years of experience</p>
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="eyebrow">About us</p>
+        <h2 id="about-heading" class="mt-3 text-3xl sm:text-[2.6rem] font-extrabold text-charcoal leading-tight">
+          Build your dream with us
+        </h2>
+        <div class="mt-5 space-y-4 text-muted leading-relaxed">
+          <p>
+            If you are facing roofing issues — whether you want to repair the
+            issues or upgrade your existing roof — Prestige Roofing Solution is
+            always here to offer premium quality services. We are rightly
+            supported by the best people: licensed and insured, with years of
+            working experience in this domain.
+          </p>
+          <p>
+            No matter how tough the task is, our roofing experts take just a
+            moment to identify the best solution. Installation, maintenance and
+            repairing — we perform everything, crafting advanced solutions
+            robust enough to run a long way.
+          </p>
+        </div>
+        <p class="mt-6 font-display font-bold text-charcoal">
+          Ajay Singh
+          <span class="block text-[0.83rem] font-body font-medium text-muted">Prestige Roofing Solutions</span>
+        </p>
+        <a
+          href={href("/about-us/")}
+          class="mt-7 inline-flex items-center gap-2 bg-charcoal text-white font-display font-bold px-7 py-3.5 rounded-md hover:bg-copper-dark transition-colors"
+        >
+          More Details <ArrowRight size={16} aria-hidden="true" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="bg-white border-y border-line" aria-labelledby="services-heading">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-24">
+      <div class="max-w-2xl">
+        <p class="eyebrow">Roof replacement services in Sydney</p>
+        <h2 id="services-heading" class="mt-3 text-3xl sm:text-[2.6rem] font-extrabold text-charcoal leading-tight">
+          What we do
+        </h2>
+        <p class="mt-4 text-muted leading-relaxed">
+          Every service below links to its dedicated page with full details,
+          process and answers to common questions.
+        </p>
+      </div>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {services.map((s) => (
+          <ServiceCard
+            slug={s.slug}
+            title={s.title}
+            description={serviceDescriptions[s.slug] ?? s.heroSub}
+            image={s.image}
+            imageAlt={s.imageAlt}
+          />
+        ))}
+      </div>
+      <p class="reveal mt-10 text-muted leading-relaxed max-w-4xl">
+        Unlock the power of your roof's potential! Whether it's restoration,
+        repair, replacement, or any of our comprehensive services mentioned
+        above, Prestige Roofing Solutions invites you to reach out to us. We're
+        not just roofing experts; we're your roofing allies.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ HOW WE WORK ============ -->
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-24" aria-labelledby="process-heading">
+    <div class="text-center max-w-2xl mx-auto">
+      <p class="eyebrow">Our systematic way</p>
+      <h2 id="process-heading" class="mt-3 text-3xl sm:text-[2.6rem] font-extrabold text-charcoal leading-tight">
+        Quality roofing, without the headache
+      </h2>
+      <p class="mt-4 text-muted leading-relaxed">
+        We follow a systematic way to serve all clients so that we can achieve
+        100% customer satisfaction — no matter how big or small the project.
+      </p>
+    </div>
+    <ol class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {[
+        { icon: MessagesSquare, step: "01", title: "Requirement discussion", body: "We listen, inspect your roof and identify the best solution." },
+        { icon: ClipboardCheck, step: "02", title: "Project planning", body: "Deep communication first — then a fair, written quote." },
+        { icon: BadgeCheck, step: "03", title: "Expert execution", body: "Licensed specialists perform the task with sincerity." },
+        { icon: ThumbsUp, step: "04", title: "Feedback & follow-up", body: "We collect your feedback and keep improving." },
+      ].map((p) => (
+        <li class="reveal relative bg-white border border-line rounded-xl p-6 pt-7">
+          <span class="absolute -top-4 left-6 bg-charcoal text-copper font-display font-extrabold text-sm px-3 py-1 rounded-md">{p.step}</span>
+          <p.icon size={22} class="text-copper-dark" aria-hidden="true" />
+          <h3 class="mt-3 font-display font-bold text-lg text-charcoal">{p.title}</h3>
+          <p class="mt-2 text-[0.9rem] text-muted leading-relaxed">{p.body}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="bg-white border-y border-line" aria-labelledby="testimonials-heading">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-24">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+        <div class="max-w-2xl">
+          <p class="eyebrow">Testimonials</p>
+          <h2 id="testimonials-heading" class="mt-3 text-3xl sm:text-[2.6rem] font-extrabold text-charcoal leading-tight">
+            Happy clients
+          </h2>
+        </div>
+        <a
+          href={href("/testimonials-roofing-solutions-sydney/")}
+          class="inline-flex items-center gap-2 font-display font-bold text-copper-dark hover:gap-3 transition-all shrink-0"
+        >
+          All testimonials <ArrowRight size={16} aria-hidden="true" />
+        </a>
+      </div>
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {siteTestimonials.slice(0, 6).map((t) => (
+          <TestimonialCard testimonial={t} />
+        ))}
+      </div>
+      <div class="reveal mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 text-center">
+        <p class="inline-flex items-center gap-2 text-[0.95rem] text-muted">
+          <span class="flex" aria-label="Rated 4.4 out of 5">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Star
+                size={16}
+                aria-hidden="true"
+                class={i < 4 ? "fill-copper text-copper" : "text-copper/50"}
+              />
+            ))}
+          </span>
+          <strong class="text-charcoal">4.4</strong> based on 26 Google reviews
+        </p>
+        <a
+          href={business.googleRating.reviewUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-display font-bold text-copper-dark hover:underline text-[0.95rem]"
+        >
+          Review us on Google
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AREAS STRIP ============ -->
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20" aria-labelledby="areas-heading">
+    <div class="reveal bg-charcoal rounded-2xl px-6 py-10 sm:p-12 flex flex-col lg:flex-row lg:items-center gap-8">
+      <div class="flex-1">
+        <p class="eyebrow">Areas we serve</p>
+        <h2 id="areas-heading" class="mt-3 text-2xl sm:text-3xl font-extrabold text-white leading-tight">
+          Roofing services across Greater Sydney
+        </h2>
+        <p class="mt-3 text-white/70 leading-relaxed max-w-2xl">
+          Hills Shire · Inner West · North Sydney · Sutherland Shire · Blue
+          Mountains · Richmond · Windsor — and everywhere in between.
+        </p>
+      </div>
+      <a
+        href={href("/area-we-serve/")}
+        class="inline-flex items-center justify-center gap-2 bg-copper text-white font-display font-bold px-7 py-4 rounded-md hover:bg-copper-dark transition-colors shrink-0"
+      >
+        Explore Service Areas <ArrowRight size={16} aria-hidden="true" />
+      </a>
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>

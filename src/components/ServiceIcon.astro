@@ -1,0 +1,42 @@
+---
+/** Maps a service slug to a Lucide icon (single place to change iconography). */
+import {
+  Droplets,
+  Fan,
+  Home,
+  Layers,
+  LayoutGrid,
+  PaintRoller,
+  RefreshCw,
+  ShieldCheck,
+  Sun,
+  Warehouse,
+  Waves,
+  Wrench,
+} from "lucide-react";
+
+interface Props {
+  slug: string;
+  size?: number;
+}
+const { slug, size = 20 } = Astro.props;
+
+const map: Record<string, any> = {
+  "roof-restoration": RefreshCw,
+  "roof-repairs": Wrench,
+  "roof-replacement": Home,
+  "roof-painting-sydney": PaintRoller,
+  "roof-wash": Droplets,
+  "tile-roof": LayoutGrid,
+  "colorbond-roof": Layers,
+  "guttering-guard": Waves,
+  guttering: ShieldCheck,
+  skylights: Sun,
+  "roof-ventilation": Fan,
+  "modern-carport-pergola": Warehouse,
+};
+
+const Icon = map[slug] ?? Wrench;
+---
+
+<Icon size={size} aria-hidden="true" />

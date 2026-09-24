@@ -1,0 +1,129 @@
+---
+/**
+ * "What Is Roof Restoration?" — full article text preserved (condensed for
+ * readability; meaning, headings and facts kept) from the original
+ * `/what-is-roof-restoration/` page.
+ */
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import CTASection from "../components/CTASection.astro";
+import { href } from "../config/site";
+import { blogPosts } from "../content/posts";
+
+const others = blogPosts.filter((p) => p.slug !== "what-is-roof-restoration").slice(0, 3);
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "What Is Roof Restoration?",
+  author: { "@type": "Organization", name: "Prestige Roofing Solutions Pty Ltd" },
+  publisher: { "@type": "Organization", name: "Prestige Roofing Solutions Pty Ltd" },
+};
+---
+
+<BaseLayout
+  title="What Is Roof Restoration? | Prestige Roofing Solutions Sydney"
+  description="What roof restoration involves — types, when to restore, and the 8-step process from evaluation to maintenance. By Prestige Roofing Solutions Sydney."
+  path="/what-is-roof-restoration/"
+  ogImage="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=1200&auto=format&fit=crop"
+  schema={schema}
+>
+  <PageHero
+    eyebrow="Blog · Roof restoration"
+    title="What is roof restoration?"
+    intro="The process of roof restoration involves repairing, cleaning, and refinishing a roof."
+    trail={[{ label: "Blog", path: href("/blog/") }, { label: "What Is Roof Restoration?" }]}
+  />
+
+  <article class="mx-auto max-w-3xl px-4 sm:px-6 py-14 sm:py-20" aria-label="Article: What is roof restoration?">
+    <div class="reveal prose-prestige text-muted leading-relaxed text-[1.02rem]">
+      <p>
+        The process of roof restoration involves repairing, cleaning, and
+        refinishing a roof. A traditional roof repair will involve removing
+        damaged materials and replacing them — a task that requires specialised
+        skills and equipment and can be time-consuming and expensive. Roof
+        restoration in Sydney can also include the installation of gutters,
+        downspouts, gables, eaves, and similar accessories. A roof restoration
+        can cover an entire roof, or part of a building that has been damaged
+        by weather, fire, or other causes.
+      </p>
+
+      <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-charcoal pt-8">Types of roof restoration</h2>
+      <p>
+        <strong class="text-charcoal">1. Mechanical:</strong> this type of
+        restoration involves repairing or replacing the roofing system with new
+        construction materials and equipment — typically requiring careful
+        planning to make sure the project is feasible.
+      </p>
+      <p>
+        <strong class="text-charcoal">2. Partial repair:</strong> in this type
+        of restoration, only specific areas of the roof are repaired or
+        replaced while other areas are left untouched. The goal is to protect
+        as much of the building as possible while still restoring it to its
+        former glory.
+      </p>
+      <p>
+        <strong class="text-charcoal">3. Structural:</strong> this type of
+        restoration involves fixing or rebuilding the structural members (the
+        beams and support posts) on the roof, which can cause extensive damage
+        over time if left alone.
+      </p>
+
+      <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-charcoal pt-8">When should roof restoration be done?</h2>
+      <p>
+        When it comes to home repair, many people think restoration should
+        always be completed before any significant renovation. Restoration can
+        reduce the cost of maintaining a property, repair damage that has
+        occurred over time, and add updated features to an existing home.
+        Consider these factors when determining whether restoration is
+        necessary:
+      </p>
+      <p><strong class="text-charcoal">1. The property's condition:</strong> if the property is in excellent condition, restoration may not be required.</p>
+      <p><strong class="text-charcoal">2. The budget:</strong> some restoration projects are more affordable than others — for example, repairing a leaky roof may cost less than replacing it. But if your budget is tight, weigh the long-term financial implications.</p>
+      <p><strong class="text-charcoal">3. The time commitment:</strong> restoration usually takes much more time than simply repairing or updating an existing structure.</p>
+      <p><strong class="text-charcoal">4. The location:</strong> sometimes restoration work can be staged efficiently — for example, repainting in one coordinated program.</p>
+      <p><strong class="text-charcoal">5. The availability of resources:</strong> some projects require access to specific skills or materials not easily available elsewhere.</p>
+
+      <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-charcoal pt-8">Roof restoration: what steps are involved?</h2>
+      <p>
+        Restoration work should be done according to the proper procedures:
+        following the correct materials, using the right contractor, and making
+        safety a top priority. The steps commonly involve arranging an
+        evaluation, cleaning the roof, fixing damage, applying a sealer, and
+        scheduling regular upkeep — but consult an expert before beginning to
+        ensure every step is needed and performed in the right order.
+      </p>
+      <p><strong class="text-charcoal">1. Set up an evaluation:</strong> have a specialist examine your roof to assess the damage and identify what needs doing — this shapes the plan for the whole task.</p>
+      <p><strong class="text-charcoal">2. Clean the roof:</strong> remove all debris such as leaves and branches and clean the roof surface, so the restoration works properly.</p>
+      <p><strong class="text-charcoal">3. Repair any damage:</strong> fix weather or wear damage — replacing damaged tiles or iron sheets, or fixing a roof leak.</p>
+      <p><strong class="text-charcoal">4. Pressure clean your roof:</strong> pressure clean at least yearly to remove dust, debris, or moss that builds up over time — keeping the roof looking its best and preventing further damage.</p>
+      <p><strong class="text-charcoal">5. Apply a sealer:</strong> once repairs are made, a sealer protects the roof from further damage and helps it last for years to come.</p>
+      <p><strong class="text-charcoal">6. Apply your roof membrane:</strong> an extra layer of protection that extends the roof's life, increases property value, and boosts aesthetic appeal. Membranes commonly take 24–48 hours to dry completely, depending on the product and conditions.</p>
+      <p><strong class="text-charcoal">7. Have a final inspection:</strong> once restoration is complete, a professional final inspection ensures everything was done correctly with no outstanding issues.</p>
+      <p><strong class="text-charcoal">8. Set up regular maintenance:</strong> schedule routine maintenance — such as a professional inspection each year — to keep the roof in good condition for years to come.</p>
+      <p>
+        Completing the roof restoration process can be a challenging task, but
+        it is an investment in your home. By taking the time to do it
+        correctly, you can ensure your roof will last for many years ahead.
+      </p>
+    </div>
+
+    <aside class="reveal mt-12 bg-cream border border-line rounded-xl p-6 sm:p-8" aria-label="More articles">
+      <h2 class="font-display font-bold text-lg text-charcoal">Keep reading</h2>
+      <ul class="mt-3 space-y-2.5">
+        {others.map((p) => (
+          <li>
+            <a href={p.originalUrl} target="_blank" rel="noopener noreferrer" class="text-copper-dark font-semibold hover:underline text-[0.95rem]">
+              {p.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </aside>
+  </article>
+
+  <CTASection
+    heading="Thinking about restoring your roof?"
+    body="Start with a professional evaluation. We'll assess the damage, explain your options and quote fairly — before any work begins."
+  />
+</BaseLayout>

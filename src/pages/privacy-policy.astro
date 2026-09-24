@@ -1,0 +1,78 @@
+---
+/**
+ * Privacy Policy — the original footer links to a Privacy Policy but no
+ * public policy page content could be retrieved. This is a standard
+ * Australian small-business template using the business's real contact
+ * details. Have it reviewed by the client's legal adviser before relying on it.
+ */
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import { business, href } from "../config/site";
+
+const updated = "September 2026";
+---
+
+<BaseLayout
+  title="Privacy Policy | Prestige Roofing Solutions"
+  description="Privacy Policy for Prestige Roofing Solutions Pty Ltd — how we collect, use and protect your personal information."
+  path="/privacy-policy/"
+  noindex
+>
+  <PageHero
+    eyebrow="Legal"
+    title="Privacy policy"
+    intro={`Last updated: ${updated}. This is a standard template for client legal review — see README.`}
+    trail={[{ label: "Privacy Policy" }]}
+  />
+  <article class="mx-auto max-w-3xl px-4 sm:px-6 py-14 sm:py-20 prose-prestige text-muted leading-relaxed" aria-label="Privacy policy">
+    <h2 class="font-display text-2xl font-extrabold text-charcoal">1. Who we are</h2>
+    <p>
+      {business.name} (“we”, “us”) provides roofing services across Greater
+      Sydney, Australia. Our head office is at {business.headOffice}. Contact
+      our privacy officer at <a class="text-copper-dark font-semibold" href={`mailto:${business.emailAdmin}`}>{business.emailAdmin}</a>
+      or {business.phone}.
+    </p>
+    <h2 class="font-display text-2xl font-extrabold text-charcoal pt-6">2. What we collect</h2>
+    <p>
+      When you enquire — by phone, email, or our online form — we collect your
+      name, email address, phone number, property details and anything you tell
+      us about the job. Our website may also collect basic, non-identifying
+      analytics (pages visited, device type) to help us improve it.
+    </p>
+    <h2 class="font-display text-2xl font-extrabold text-charcoal pt-6">3. How we use it</h2>
+    <p>
+      We use your information to respond to enquiries, prepare inspections and
+      quotes, schedule and perform roofing work, and meet our legal and tax
+      obligations. We do not sell your personal information.
+    </p>
+    <h2 class="font-display text-2xl font-extrabold text-charcoal pt-6">4. Disclosure</h2>
+    <p>
+      We share information only where needed to serve you — for example with
+      our form-processing provider (to deliver your enquiry), payment or
+      scheduling tools, or where required by Australian law.
+    </p>
+    <h2 class="font-display text-2xl font-extrabold text-charcoal pt-6">5. Storage &amp; security</h2>
+    <p>
+      We take reasonable steps to protect your information from misuse, loss
+      and unauthorised access, and we keep it only as long as needed for the
+      purposes above or as required by law.
+    </p>
+    <h2 class="font-display text-2xl font-extrabold text-charcoal pt-6">6. Your rights</h2>
+    <p>
+      You may request access to, or correction of, your personal information at
+      any time by contacting us at the details above. If you believe we have
+      breached your privacy, contact us first; if unresolved, you may complain
+      to the Office of the Australian Information Commissioner (OAIC).
+    </p>
+    <h2 class="font-display text-2xl font-extrabold text-charcoal pt-6">7. Cookies</h2>
+    <p>
+      This website uses minimal cookies/embedded content (fonts, maps) needed
+      for it to function. Blocking cookies in your browser will not break the
+      core content, though embedded maps and fonts may not load.
+    </p>
+    <p class="pt-4">
+      Questions? <a class="text-copper-dark font-semibold" href={href("/contact-us/")}>Contact us</a> —
+      we respond as soon as possible.
+    </p>
+  </article>
+</BaseLayout>

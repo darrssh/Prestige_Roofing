@@ -1,0 +1,73 @@
+---
+/**
+ * Terms and Conditions — the original footer links to Terms and Conditions
+ * but no public page content could be retrieved. Standard template using the
+ * business's real details; requires client legal review before reliance.
+ */
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import { business, href } from "../config/site";
+---
+
+<BaseLayout
+  title="Terms and Conditions | Prestige Roofing Solutions"
+  description="Terms and Conditions for dealing with Prestige Roofing Solutions Pty Ltd — quotes, work, payments and warranties."
+  path="/terms-and-conditions/"
+  noindex
+>
+  <PageHero
+    eyebrow="Legal"
+    title="Terms and conditions"
+    intro="Standard template for client legal review — see README."
+    trail={[{ label: "Terms and Conditions" }]}
+  />
+  <article class="mx-auto max-w-3xl px-4 sm:px-6 py-14 sm:py-20 prose-prestige text-muted leading-relaxed" aria-label="Terms and conditions">
+    <h2 class="font-display text-2xl font-extrabold text-charcoal">1. Quotes</h2>
+    <p>
+      All quotes are provided in writing after inspection (unless stated
+      otherwise), are valid for 30 days, and are based on the roof condition
+      visible at inspection. If hidden damage is discovered once work begins,
+      we will stop, explain the finding, and agree any variation with you
+      before proceeding.
+    </p>
+    <h2 class="font-display text-2xl font-extrabold text-charcoal pt-6">2. Scheduling &amp; access</h2>
+    <p>
+      We will agree work dates with you and arrive as promised. You must
+      provide safe, reasonable access to the roof area (including driveway
+      access for materials and waste removal where needed). Weather or safety
+      issues may require rescheduling — we will always tell you promptly.
+    </p>
+    <h2 class="font-display text-2xl font-extrabold text-charcoal pt-6">3. Workmanship</h2>
+    <p>
+      Our team is licensed and insured, and all work is performed with due care
+      and skill in accordance with Australian law and relevant standards. We
+      clean up at the end of every job and walk the finished work through with
+      you.
+    </p>
+    <h2 class="font-display text-2xl font-extrabold text-charcoal pt-6">4. Payments</h2>
+    <p>
+      Payment terms are set out in your written quote or invoice. Deposits (if
+      any) are applied to the contract total. Late payments may incur
+      reasonable recovery costs as permitted by law.
+    </p>
+    <h2 class="font-display text-2xl font-extrabold text-charcoal pt-6">5. Warranties</h2>
+    <p>
+      Workmanship warranties are confirmed in writing per job. Manufacturer
+      warranties on materials (tiles, Colorbond steel, coatings, skylights)
+      pass through to you on the manufacturer's terms. Nothing in these terms
+      limits your rights under the Australian Consumer Law.
+    </p>
+    <h2 class="font-display text-2xl font-extrabold text-charcoal pt-6">6. Website content</h2>
+    <p>
+      Testimonials on this website are genuine customer words. Imagery is
+      illustrative of roofing work and suburbs served. Blog guides are general
+      information, not quotes or professional advice for your specific roof.
+    </p>
+    <h2 class="font-display text-2xl font-extrabold text-charcoal pt-6">7. Contact</h2>
+    <p>
+      {business.name}, {business.headOffice} · {business.phone} ·
+      <a class="text-copper-dark font-semibold" href={`mailto:${business.emailSales}`}> {business.emailSales}</a>.
+      Questions about these terms? <a class="text-copper-dark font-semibold" href={href("/contact-us/")}>Contact us</a>.
+    </p>
+  </article>
+</BaseLayout>

@@ -1,0 +1,28 @@
+---
+/** Breadcrumb trail (Home / … / Current). */
+import { ChevronRight } from "lucide-react";
+import { href } from "../config/site";
+
+interface Props {
+  trail: { label: string; path?: string }[];
+}
+const { trail } = Astro.props;
+---
+
+<nav aria-label="Breadcrumb" class="text-[0.83rem]">
+  <ol class="flex flex-wrap items-center gap-1.5 text-muted">
+    <li>
+      <a href={href("/")} class="hover:text-copper-dark transition-colors">Home</a>
+    </li>
+    {trail.map((t) => (
+      <li class="flex items-center gap-1.5">
+        <ChevronRight size={13} aria-hidden="true" />
+        {t.path ? (
+          <a href={t.path} class="hover:text-copper-dark transition-colors">{t.label}</a>
+        ) : (
+          <span aria-current="page" class="text-slate-text font-medium">{t.label}</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>

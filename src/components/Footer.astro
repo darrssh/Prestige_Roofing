@@ -1,0 +1,113 @@
+---
+/** Site footer — business description, sitemap, services, contact, legal. */
+import { Clock, Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
+import Logo from "./Logo.astro";
+import { business, href, navigation } from "../config/site";
+
+const serviceLinks = navigation.find((n) => n.label === "Services")?.children ?? [];
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-charcoal text-white/75">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 pt-14 pb-8">
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+      <!-- Brand -->
+      <div>
+        <Logo variant="light" />
+        <p class="mt-5 text-[0.92rem] leading-relaxed max-w-sm">
+          Prestige Roofing Solutions Pty Ltd — the one-stop destination for
+          solving all types of roofing issues in an inexpensive way. Experts in
+          roof repair, replacement, gutter services, and more across Sydney.
+        </p>
+        <p class="mt-4 text-[0.92rem] leading-relaxed max-w-sm">
+          Advanced tools, expert-approved processes and a fair pricing model —
+          with a close eye on everything that enhances the look and durability
+          of your roof.
+        </p>
+        <div class="mt-5 flex items-center gap-3">
+          <a
+            href={business.socials.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Prestige Roofing Solutions on Facebook"
+            class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/20 hover:border-copper hover:text-copper transition-colors"
+          >
+            <Facebook size={17} aria-hidden="true" />
+          </a>
+          <a
+            href={business.socials.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Prestige Roofing Solutions on Instagram"
+            class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/20 hover:border-copper hover:text-copper transition-colors"
+          >
+            <Instagram size={17} aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Sitemap -->
+      <nav aria-label="Footer">
+        <h3 class="font-display font-bold text-white text-sm uppercase tracking-[0.18em]">Site Map</h3>
+        <ul class="mt-5 space-y-2.5 text-[0.92rem]">
+          <li><a class="hover:text-copper transition-colors" href={href("/")}>Home</a></li>
+          <li><a class="hover:text-copper transition-colors" href={href("/about-us/")}>About Us</a></li>
+          <li><a class="hover:text-copper transition-colors" href={href("/services/")}>Services</a></li>
+          <li><a class="hover:text-copper transition-colors" href={href("/testimonials-roofing-solutions-sydney/")}>Testimonials</a></li>
+          <li><a class="hover:text-copper transition-colors" href={href("/area-we-serve/")}>Areas We Serve</a></li>
+          <li><a class="hover:text-copper transition-colors" href={href("/blog/")}>Blog</a></li>
+          <li><a class="hover:text-copper transition-colors" href={href("/contact-us/")}>Contact</a></li>
+          <li><a class="hover:text-copper transition-colors" href={href("/get-a-quote/")}>Get a Quote</a></li>
+        </ul>
+      </nav>
+
+      <!-- Services -->
+      <nav aria-label="Footer services">
+        <h3 class="font-display font-bold text-white text-sm uppercase tracking-[0.18em]">Services</h3>
+        <ul class="mt-5 space-y-2.5 text-[0.92rem]">
+          {serviceLinks.slice(0, 8).map((s) => (
+            <li><a class="hover:text-copper transition-colors" href={s.href}>{s.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="font-display font-bold text-white text-sm uppercase tracking-[0.18em]">Contact</h3>
+        <ul class="mt-5 space-y-3.5 text-[0.92rem]">
+          <li class="flex gap-2.5">
+            <MapPin size={16} class="text-copper shrink-0 mt-0.5" aria-hidden="true" />
+            <span>{business.headOffice}</span>
+          </li>
+          <li>
+            <a href={business.phoneHref} class="flex gap-2.5 hover:text-copper transition-colors">
+              <Phone size={16} class="text-copper shrink-0 mt-0.5" aria-hidden="true" />
+              <span>{business.phone}</span>
+            </a>
+          </li>
+          <li>
+            <a href={`mailto:${business.emailSales}`} class="flex gap-2.5 hover:text-copper transition-colors break-all">
+              <Mail size={16} class="text-copper shrink-0 mt-0.5" aria-hidden="true" />
+              <span>{business.emailSales}</span>
+            </a>
+          </li>
+          <li class="flex gap-2.5">
+            <Clock size={16} class="text-copper shrink-0 mt-0.5" aria-hidden="true" />
+            <span>
+              Mon – Fri: 07.00am – 05.00pm<br />Sat: 08.00am – 01.00pm
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.82rem] text-white/55">
+      <p>© {year} {business.name}. All rights reserved.</p>
+      <ul class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+        <li><a class="hover:text-copper transition-colors" href={href("/privacy-policy/")}>Privacy Policy</a></li>
+        <li><a class="hover:text-copper transition-colors" href={href("/terms-and-conditions/")}>Terms and Conditions</a></li>
+        <li><a class="hover:text-copper transition-colors" href={href("/contact-us/")}>Careers</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

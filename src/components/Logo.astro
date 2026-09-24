@@ -1,0 +1,53 @@
+---
+/** Wordmark logo — inline SVG so it works offline and on any base path. */
+interface Props {
+  variant?: "dark" | "light";
+  compact?: boolean;
+}
+const { variant = "dark", compact = false } = Astro.props;
+const fg = variant === "light" ? "#FFFFFF" : "#171C24";
+const sub = variant === "light" ? "#C9CDD4" : "#747B85";
+---
+
+<span class="inline-flex items-center gap-2.5" aria-label="Prestige Roofing Solutions Pty Ltd">
+  <svg
+    width="40"
+    height="40"
+    viewBox="0 0 40 40"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    class="shrink-0"
+  >
+    <rect x="1" y="1" width="38" height="38" rx="9" fill={variant === "light" ? "#FFFFFF" : "#171C24"} />
+    <path
+      d="M8 24.5 20 13l12 11.5"
+      stroke="#C8874B"
+      stroke-width="2.6"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M12.5 24.5V29h15v-4.5"
+      stroke="#C8874B"
+      stroke-width="2.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <circle cx="20" cy="26.4" r="1.4" fill="#C8874B" />
+  </svg>
+  <span class="leading-none">
+    <span
+      class="block font-display font-extrabold tracking-tight text-[1.05rem]"
+      style={`color:${fg}`}
+    >
+      PRESTIGE
+    </span>
+    <span
+      class="block text-[0.62rem] font-semibold uppercase"
+      style={`color:${sub}; letter-spacing:0.28em`}
+    >
+      Roofing Solutions
+    </span>
+  </span>
+</span>
