@@ -1,21 +1,10 @@
-# Deploy the Astro static site to GitHub Pages.
-#
-# Setup (one time, in the GitHub repo):
-#   1. Settings → Pages → Source: "GitHub Actions".
-#   2. Push to the default branch (or run manually from the Actions tab).
-#
-# Configuration:
-#   - PUBLIC_SITE_URL / PUBLIC_BASE_PATH env defaults live in astro.config.mjs
-#     and .env.example. For a custom domain, set repository Variables
-#     (Settings → Secrets and variables → Actions → Variables):
-#       PUBLIC_SITE_URL=https://prestigeroofingsolutions.com.au
-#       PUBLIC_BASE_PATH=/
-#     and add a CNAME file / DNS records. See README for details.
-name: Deploy to GitHub Pages
+name: Deploy Astro Website to GitHub Pages
 
 on:
   push:
-    branches: ["master", "main"]
+    branches:
+      - main
+
   workflow_dispatch:
 
 permissions:
@@ -24,35 +13,33 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build Astro website
         run: npm run build
-        env:
-          PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL }}
-          PUBLIC_BASE_PATH: ${{ vars.PUBLIC_BASE_PATH }}
 
-      - name: Check internal links
-        run: npm run audit:links
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
 
-      - name: Upload artifact
+      - name: Upload website artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
@@ -61,8 +48,11 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
+
     runs-on: ubuntu-latest
+
+    needs: build
+
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
