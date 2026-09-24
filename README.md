@@ -148,14 +148,22 @@ labelled form controls, focus styles.
 
 ### Option A — Project site (default, no domain changes)
 
-1. Create a repo named `prestige-roofing-website` and push this project.
+1. The repo `darrssh/Prestige_Roofing` already exists — push this project to it
+   (see commands below).
 2. GitHub → Settings → Pages → Source: **GitHub Actions**.
-3. Push to `master`/`main` (or run the workflow manually). The site deploys to
-   `https://<username>.github.io/prestige-roofing-website/`.
-4. Set the repo variable `PUBLIC_SITE_URL=https://<username>.github.io`
-   (Settings → Secrets and variables → Actions → Variables) so canonical URLs
-   and the sitemap match; `PUBLIC_BASE_PATH` stays `/prestige-roofing-website`.
-5. Update `public/robots.txt` Sitemap line to the deployed URL.
+3. Push to `main` (or run the workflow manually). The site deploys to
+   `https://darrssh.github.io/Prestige_Roofing/`.
+4. Canonical URLs, sitemap and `robots.txt` already default to that URL — no
+   extra variables needed. (To override, set repo Variables
+   `PUBLIC_SITE_URL` / `PUBLIC_BASE_PATH`; empty workflow vars safely fall
+   back to these defaults.)
+5. Push commands (first time, from this folder):
+
+```bash
+git remote add origin https://github.com/darrssh/Prestige_Roofing.git
+git branch -M main
+git push -u origin main
+```
 
 ### Option B — Custom domain (prestigeroofingsolutions.com.au)
 

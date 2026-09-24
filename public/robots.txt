@@ -2,6 +2,6 @@ User-agent: *
 Allow: /
 
 # Update the Sitemap URL to match your deployment (see README):
-# - Project site: https://<github-username>.github.io/prestige-roofing-website/sitemap-index.xml
+# - Project site: https://darrssh.github.io/Prestige_Roofing/sitemap-index.xml
 # - Custom domain: https://prestigeroofingsolutions.com.au/sitemap-index.xml
-Sitemap: https://prestigeroofingsolutions.com.au/prestige-roofing-website/sitemap-index.xml
+Sitemap: https://darrssh.github.io/Prestige_Roofing/sitemap-index.xml

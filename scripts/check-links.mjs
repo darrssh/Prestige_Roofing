@@ -31,7 +31,7 @@ function resolveLink(pageFile, href) {
     // Map them back onto ./dist by stripping the first path segment when it
     // matches the deployed base directory name.
     const parts = clean.split("/").filter(Boolean);
-    const baseName = "prestige-roofing-website";
+    const baseName = "Prestige_Roofing";
     const rel =
       parts[0] === baseName ? parts.slice(1).join("/") : parts.join("/");
     target = join(dist, rel);

@@ -13,8 +13,8 @@ import tailwindcss from "@tailwindcss/vite";
 //   Defaults to `/prestige-roofing-website` (project site). When a custom
 //   domain is connected, set this to `/`.
 const siteUrl =
-  process.env.PUBLIC_SITE_URL ?? "https://prestigeroofingsolutions.com.au";
-const basePath = process.env.PUBLIC_BASE_PATH ?? "/prestige-roofing-website";
+  process.env.PUBLIC_SITE_URL || "https://darrssh.github.io";
+const basePath = process.env.PUBLIC_BASE_PATH || "/Prestige_Roofing";
 
 export default defineConfig({
   // NOTE: `site` must be the origin only. Astro (and `canonicalFor`) appends
